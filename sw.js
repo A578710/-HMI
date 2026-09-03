@@ -1,4 +1,4 @@
-const CACHE = 'hmi-operator-guide-v2-4';
+const CACHE = 'hmi-service-guide-v2-7';
 const ASSETS = [
   './','./index.html','./manifest.webmanifest','./assets/css/styles.css','./assets/js/app.js','./assets/js/explorer.js',
   './assets/icons/icon-192.png','./assets/icons/icon-512.png',

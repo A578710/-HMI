@@ -120,4 +120,88 @@ img{max-width:100%;display:block}
 
 .subsection-block{margin-top:26px}.subsection-title{margin:0 0 8px;font-size:24px;color:#112143}.subsection-lead{margin:0 0 18px;color:#5f6f87}.screen-showcase{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.screen-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}.screen-card img{width:100%;display:block;background:linear-gradient(180deg,#08173f,#0a235f);padding:10px;cursor:zoom-in}.screen-card-body{padding:16px 16px 14px}.screen-card h4{margin:0 0 8px;font-size:19px;color:#14234b}.screen-card p{margin:0 0 8px;color:#5c6c84}.screen-card ul{margin:0;padding-left:20px;color:#31415e;display:grid;gap:4px}.service-showcase .screen-card h4{font-size:18px}@media (max-width:1100px){.screen-showcase{grid-template-columns:1fr}}
 
-.operator-scope-note{border-left:4px solid #f37021;background:#fff7f1;padding:12px 14px;border-radius:10px;color:#5e4130}.operator-scope-note strong{color:#9a4312}
+.service-scope-note{border-left:4px solid #00a0c6;background:#eefaff;padding:12px 14px;border-radius:10px;color:#24465e}.service-scope-note strong{color:#006b87}
+
+/* v2.5 — clean interactive overlay for settings/service screens */
+.hotspot-layer.compact-hotspots .hmi-hotspot{
+  border-color:transparent!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.hotspot-layer.compact-hotspots .hmi-hotspot::after{
+  width:17px;height:17px;
+  top:-6px;right:5px;
+  font-size:8px;
+  box-shadow:0 1px 5px rgba(0,0,0,.42);
+  opacity:.96;
+}
+.hotspot-layer.compact-hotspots .hmi-hotspot::before{
+  content:"";position:absolute;inset:0;border:1.5px solid transparent;border-radius:7px;
+  background:transparent;pointer-events:none;transition:.14s ease;
+}
+.hotspot-layer.compact-hotspots .hmi-hotspot:hover::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot:focus-visible::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.active::before{
+  border-color:#5be6ff;background:rgba(0,160,198,.07);
+  box-shadow:0 0 0 2px rgba(55,220,248,.12);
+}
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-nav:hover::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-nav:focus-visible::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-nav.active::before{
+  border-color:#5f9cff;background:rgba(41,99,190,.06);
+}
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-param:hover::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-param:focus-visible::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-param.active::before{
+  border-color:#f4a047;background:rgba(243,112,33,.055);
+}
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-command:hover::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-command:focus-visible::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-command.active::before{
+  border-color:#e3bd35;background:rgba(255,198,0,.055);
+}
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-alarm:hover::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-alarm:focus-visible::before,
+.hotspot-layer.compact-hotspots .hmi-hotspot.type-alarm.active::before{
+  border-color:#ef6659;background:rgba(217,54,43,.055);
+}
+@media(max-width:700px){.hotspot-layer.compact-hotspots .hmi-hotspot::after{width:15px;height:15px;top:-5px;right:4px;font-size:7px}}
+
+
+/* v2.7 — pixel-accurate cells from source HMI screenshots */
+.hotspot-layer.precision-hotspots .hmi-hotspot{
+  box-sizing:border-box;
+  border:1.4px solid rgba(78,214,243,.72)!important;
+  background:rgba(0,160,198,.018)!important;
+  border-radius:10px;
+  box-shadow:none!important;
+  opacity:1;
+  overflow:visible;
+}
+.hotspot-layer.precision-hotspots .hmi-hotspot::before{display:none!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot::after{display:none!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-param{border-color:rgba(247,161,67,.74)!important;background:rgba(243,112,33,.018)!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-nav{border-color:rgba(92,154,255,.72)!important;background:rgba(41,99,190,.014)!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-command{border-color:rgba(236,194,47,.82)!important;background:rgba(255,198,0,.018)!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-alarm{border-color:rgba(239,98,84,.78)!important;background:rgba(217,54,43,.018)!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot:hover,
+.hotspot-layer.precision-hotspots .hmi-hotspot:focus-visible,
+.hotspot-layer.precision-hotspots .hmi-hotspot.active{
+  border-width:2px!important;
+  background:rgba(66,215,245,.075)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)!important;
+  outline:0;
+}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-param:hover,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-param:focus-visible,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-param.active{background:rgba(243,112,33,.065)!important;border-color:#f5a247!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-nav:hover,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-nav:focus-visible,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-nav.active{background:rgba(72,123,214,.06)!important;border-color:#63a0ff!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-command:hover,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-command:focus-visible,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-command.active{background:rgba(255,198,0,.065)!important;border-color:#edc42f!important}
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-view:hover,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-view:focus-visible,
+.hotspot-layer.precision-hotspots .hmi-hotspot.type-view.active{background:rgba(0,160,198,.06)!important;border-color:#58def7!important}
+
