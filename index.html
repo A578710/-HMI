@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#090760" name="theme-color"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/>
+<meta content="Інтерактивний технічний довідник HMI насосної групи 3 × 5,5 кВт: карта екранів, об’єкти інтерфейсу, операторські процедури та діагностика." name="description"/>
+<title>HMI 3×5,5 кВт — Інтерактивний технічний довідник</title>
+<link href="./manifest.webmanifest" rel="manifest"/>
+<link href="./assets/icons/icon-192.png" rel="icon"/>
+<link href="./assets/css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<aside aria-label="Навігація інструкції" class="sidebar" id="sidebar">
+<div class="brand-block">
+<img alt="Енерго Плюс" class="brand-img" src="./assets/img/header_brand.webp"/>
+<div class="manual-id">
+<span class="eyebrow">HMI • ТЕХНІЧНИЙ ДОВІДНИК</span>
+<strong>Насосна група 3 × 5,5 кВт</strong>
+<small>Kinco GL070E • TWERD MFC710</small>
+</div>
+</div>
+<label class="search-wrap" for="searchInput">
+<span aria-hidden="true" class="search-icon">⌕</span>
+<input autocomplete="off" id="searchInput" placeholder="Пошук: сухий хід, аварія…" type="search"/>
+<kbd>/</kbd>
+</label>
+<div class="search-results" hidden="" id="searchResults"></div>
+<nav class="nav-list" id="navList"><a data-nav="" href="#interactive">Інтерактивна модель HMI</a><a data-nav="" href="#quick">Оперативна довідка</a><a data-nav="" href="#start">1. Підготовка до роботи</a><a data-nav="" href="#main-screen">2. Головний екран</a><a data-nav="" href="#pumps">3. Стани насосів</a><a data-nav="" href="#pressure">4. Параметри тиску</a><a data-nav="" href="#schedule">5. Тижневий графік</a><a data-nav="" href="#trends">6. Тренди</a><a data-nav="" href="#events">7. Журнал подій</a><a data-nav="" href="#alarms">8. Аварії та попередження</a><a data-nav="" href="#auto">9. Автоматичні режими</a><a data-nav="" href="#dry-run">10. Захист сухого ходу</a><a data-nav="" href="#diagnostics">11. Первинна діагностика</a><a data-nav="" href="#stop">12. Межі дій оператора</a></nav>
+<div class="sidebar-footer">
+<div class="status-row"><span class="status-dot" id="statusDot"></span><span id="connectionText">Перевірка з'єднання…</span></div>
+<div class="version">WEB-HMI-GUIDE • Rev. 2.0 • 03.09.2026</div>
+</div>
+</aside>
+<main class="main">
+<header class="topbar">
+<button aria-label="Відкрити меню" class="icon-btn mobile-only" id="menuButton">☰</button>
+<div class="topbar-title">
+<span>ІНТЕРАКТИВНИЙ ТЕХНІЧНИЙ ДОВІДНИК</span>
+<strong>HMI шафи керування трьома насосами 5,5 кВт</strong>
+</div>
+<div class="topbar-actions">
+<button class="btn ghost" hidden="" id="installButton">Встановити</button>
+<button class="btn ghost" id="shareButton">Поділитися</button>
+</div>
+</header>
+<div class="content">
+<section class="section interactive-section searchable" data-title="Інтерактивна модель HMI карта екранів об’єкти параметри налаштування" id="interactive">
+<div class="section-head interactive-head">
+<span class="section-num">HMI</span>
+<div>
+<span class="technical-kicker">ІНТЕРАКТИВНИЙ ТЕХНІЧНИЙ ОГЛЯД</span>
+<h2>Інтерактивна модель операторського інтерфейсу</h2>
+<p>Виберіть екран HMI та натискайте виділені об’єкти. Праворуч відображається призначення, значення для оператора, рівень доступу та пов’язана процедура.</p>
+</div>
+</div>
+<div class="model-notice">
+<span class="model-notice-icon">i</span>
+<div><strong>Демонстраційний режим.</strong> Інтерактивна модель відтворює структуру та логіку навігації HMI для ознайомлення. Команди з вебсторінки не передаються до PLC або ПЧ.</div>
+</div>
+<div aria-label="Екрани HMI" class="screen-selector" id="screenSelector" role="tablist">
+<button aria-selected="true" class="screen-tab active" data-screen="main" role="tab"><span>01</span>Головний екран</button>
+<button class="screen-tab" data-screen="settings" role="tab"><span>02</span>Налаштування</button>
+<button class="screen-tab" data-screen="schedule" role="tab"><span>03</span>Графік роботи</button>
+<button class="screen-tab" data-screen="trends" role="tab"><span>04</span>Графік тиску</button>
+<button class="screen-tab" data-screen="journal" role="tab"><span>05</span>Журнал подій</button>
+<button class="screen-tab" data-screen="alarms" role="tab"><span>06</span>Аварії</button>
+</div>
+<div class="explorer-grid">
+<div class="screen-workbench">
+<div class="screen-workbench-bar">
+<div><span class="live-label">ЕКРАН HMI</span><strong id="screenTitle">Головний екран</strong></div>
+<div class="workbench-actions">
+<button class="compact-btn" id="toggleHotspots" type="button">Сховати позначення</button>
+<button class="compact-btn" id="resetExplorer" type="button">Початковий стан</button>
+</div>
+</div>
+<div class="hmi-canvas" id="hmiCanvas">
+<img alt="Головний екран HMI" draggable="false" id="interactiveScreen" src="./assets/img/main.webp"/>
+<div aria-label="Інтерактивні області HMI" class="hotspot-layer" id="hotspotLayer"></div>
+</div>
+<div class="screen-caption"><span class="caption-dot"></span><span id="screenCaption">Основна сторінка контролю тиску, станів насосів, діагностики та активної уставки.</span></div>
+</div>
+<aside aria-live="polite" class="object-inspector" id="objectInspector">
+<div class="inspector-topline"><span id="objectCode">HMI-01</span><span id="objectClass">ОБ’ЄКТ ІНТЕРФЕЙСУ</span></div>
+<h3 id="objectTitle">Оберіть об’єкт на екрані</h3>
+<p class="object-summary" id="objectSummary">Натисніть на будь-яку виділену область HMI, щоб отримати технічний опис та дії оператора.</p>
+<dl class="inspector-list">
+<div><dt>Призначення</dt><dd id="objectPurpose">—</dd></div>
+<div><dt>Що оцінює оператор</dt><dd id="objectOperator">—</dd></div>
+<div><dt>Рівень доступу</dt><dd id="objectAccess">—</dd></div>
+<div><dt>Пов’язаний розділ</dt><dd id="objectRelated">—</dd></div>
+</dl>
+<div class="inspector-warning" hidden="" id="objectWarning"></div>
+<div class="inspector-actions">
+<a class="btn primary" href="#main-screen" id="relatedLink">Відкрити розділ інструкції</a>
+</div>
+</aside>
+</div>
+<div class="object-register-wrap">
+<div class="object-register-head">
+<div><strong>Реєстр об’єктів поточного екрана</strong><span>Альтернативний спосіб вибору без натискання на зображення.</span></div>
+<span class="object-count" id="objectCount">0 об’єктів</span>
+</div>
+<div class="object-register" id="objectRegister"></div>
+</div>
+<div class="technical-legend">
+<span><i class="legend-mark view"></i>Інформаційний / контрольний об’єкт</span>
+<span><i class="legend-mark nav"></i>Навігаційний об’єкт</span>
+<span><i class="legend-mark param"></i>Параметр / уставка</span>
+<span><i class="legend-mark alarm"></i>Аварійний / захисний об’єкт</span>
+</div>
+</section><section class="hero searchable" data-title="Швидка довідка оператора" id="quick">
+<div class="hero-copy">
+<span class="pill operator">ОПЕРАТОР</span>
+<h1>Оперативна довідка оператора</h1>
+<p>Стислий регламент щоденного контролю HMI. Для детального ознайомлення з екранами, об’єктами та параметрами використовуйте інтерактивну модель інтерфейсу.</p>
+<div class="hero-actions"><a class="btn primary" href="#interactive">Відкрити інтерактивну модель</a><a class="btn danger-outline" href="#diagnostics">Первинна діагностика</a></div>
+</div>
+<div class="hero-visual">
+<img alt="Головний екран HMI насосної групи" data-lightbox="" loading="eager" src="./assets/img/main.webp"/>
+</div>
+</section>
+<section class="section searchable" data-title="Перевірка системи за 30 секунд">
+<div class="section-head compact">
+<span class="section-num">00</span>
+<div><h2>Перевірка системи за 30 секунд</h2><p>П’ять ознак, які оператор оцінює перед роботою.</p></div>
+</div>
+<div class="check-grid">
+<article class="check-card ok"><span>01</span><h3>ЖИВЛЕННЯ</h3><strong>НОРМА</strong><p>За іншого стану перевірити активні аварії та живлення.</p></article>
+<article class="check-card ok"><span>02</span><h3>СУХИЙ ХІД</h3><strong>НЕ АКТИВНИЙ</strong><p>Якщо активний — не форсувати запуск; перевірити наявність води.</p></article>
+<article class="check-card ok"><span>03</span><h3>ЗВ’ЯЗОК З ПЧ</h3><strong>НОРМА</strong><p>За втрати зв’язку перейти до журналу та передати інформацію в сервіс.</p></article>
+<article class="check-card ok"><span>04</span><h3>НАСОСИ №1–№3</h3><strong>ДОСТУПНІ В АВТО</strong><p>«ПОМИЛКА РЕЖИМІВ» або «НАСОС НЕ АКТИВНИЙ» потребують перевірки.</p></article>
+<article class="check-card ok"><span>05</span><h3>ТИСК / SP</h3><strong>PV РЕАГУЄ</strong><p>Порівнювати фактичний тиск саме з активною уставкою.</p></article>
+</div>
+<div class="callout warning"><strong>Важливо.</strong> Режим сну, каскад і розвантаження не є аваріями. Не виконуйте скидання, якщо активної аварії немає.</div>
+</section>
+<section class="section searchable" data-title="Початок роботи перед запуском" id="start">
+<div class="section-head"><span class="section-num">01</span><div><h2>Початок роботи</h2><p>Що перевірити до автоматичного запуску.</p></div></div>
+<div class="two-col">
+<div>
+<ol class="steps">
+<li><span>1</span><div><strong>Живлення</strong><p>Шафа ввімкнена, активної аварії живлення немає.</p></div></li>
+<li><span>2</span><div><strong>Вода / сухий хід</strong><p>Вода є, захист сухого ходу не активний.</p></div></li>
+<li><span>3</span><div><strong>Фізичні режими насосів</strong><p>Потрібні насоси переведені в положення «Авто».</p></div></li>
+<li><span>4</span><div><strong>HMI та ПЧ</strong><p>Дані оновлюються, зв’язок із ПЧ нормальний, аварійні повідомлення відсутні.</p></div></li>
+<li><span>5</span><div><strong>Після запуску</strong><p>Контролювати відповідність станів HMI фактичній роботі насосів і тиску.</p></div></li>
+</ol>
+</div>
+<figure class="figure-card"><img alt="Діагностичні індикатори HMI: живлення, сухий хід, зв'язок з ПЧ" data-lightbox="" loading="lazy" src="./assets/img/diagnostics.webp"/><figcaption>Штатна картина: базові індикатори показують «НОРМА».</figcaption></figure>
+</div>
+<div class="callout info"><strong>HMI не замінює апаратні блокування.</strong> Фізичні перемикачі «Авто – 0 – Ручний», захисти та силові кола мають пріоритет над екранною індикацією.</div>
+</section>
+<section class="section searchable" data-title="Головний екран тиск активна уставка діагностика" id="main-screen">
+<div class="section-head"><span class="section-num">02</span><div><h2>Головний екран</h2><p>Основна сторінка постійного контролю.</p></div></div>
+<figure class="figure-card wide"><img alt="Головний екран HMI" data-lightbox="" loading="lazy" src="./assets/img/main.webp"/><figcaption>На одному екрані: тиск, активна уставка, діагностика, насоси, частота та струм ПЧ.</figcaption></figure>
+<div class="metric-grid">
+<article><span>PV</span><h3>Фактичний тиск</h3><p>Порівнюйте з активною уставкою, а не з випадковим бажаним значенням.</p></article>
+<article><span>SP</span><h3>Активна уставка</h3><p>Значення, яке автоматика реально використовує в поточний момент.</p></article>
+<article><span>I / f</span><h3>ПЧ-насос</h3><p>Під час роботи на ПЧ контролюйте струм двигуна та вихідну частоту.</p></article>
+<article><span>LOG</span><h3>Системні індикатори</h3><p>Живлення, сухий хід та зв’язок з ПЧ не повинні сигналізувати проблему.</p></article>
+</div>
+<div class="quick-read">
+<strong>Як прочитати екран за кілька секунд:</strong>
+<span>1 — тиск</span><span>2 — активна уставка</span><span>3 — базові індикатори</span><span>4 — стани трьох насосів</span><span>5 — I/f ПЧ-насоса</span><span>6 — журнал, якщо щось не так</span>
+</div>
+</section>
+<section class="section searchable" data-title="Стани насосів готовий працює ПЧ-АВТО мережа-АВТО помилка режимів насос не активний" id="pumps">
+<div class="section-head"><span class="section-num">03</span><div><h2>Стани насосів</h2><p>Спочатку читайте текст стану, потім режим. Колір — лише допоміжний.</p></div></div>
+<figure class="figure-card wide"><img alt="Картки трьох насосів на HMI" data-lightbox="" loading="lazy" src="./assets/img/pumps.webp"/><figcaption>Приклад: ручний режим, ПЧ-АВТО та МЕРЕЖА-АВТО.</figcaption></figure>
+<div class="state-grid">
+<article class="state ready"><h3>ГОТОВИЙ</h3><p>Насос у АВТО і доступний системі, але зараз не запущений.</p><strong>Дія: очікувати автоматичного запуску.</strong></article>
+<article class="state run"><h3>ПРАЦЮЄ • ПЧ-АВТО</h3><p>Насос працює від перетворювача частоти.</p><strong>Дія: контролювати тиск, f та I.</strong></article>
+<article class="state run"><h3>ПРАЦЮЄ • МЕРЕЖА-АВТО</h3><p>Насос працює від мережі як ступінь каскаду.</p><strong>Дія: контролювати тиск і каскад.</strong></article>
+<article class="state manual"><h3>РУЧНИЙ РЕЖИМ</h3><p>Насос працює поза автоматичним керуванням.</p><strong>Дія: перевірити фізичний перемикач і причину.</strong></article>
+<article class="state off"><h3>НАСОС НЕ АКТИВНИЙ</h3><p>Насос не бере участі у штатній автоматичній роботі.</p><strong>Дія: врахувати зменшення доступної продуктивності.</strong></article>
+<article class="state fault"><h3>ПОМИЛКА РЕЖИМІВ</h3><p>Зафіксований несумісний стан керування насосом.</p><strong>Дія: не повторювати пуски; перевірити перемикачі та журнал.</strong></article>
+</div>
+</section>
+<section class="section searchable" data-title="Робочий тиск базова активна уставка гістерезис SP PV" id="pressure">
+<div class="section-head"><span class="section-num">04</span><div><h2>Робочий тиск і гістерезис</h2><p>Оператор змінює лише дозволені робочі параметри.</p></div></div>
+<div class="two-col">
+<figure class="figure-card"><img alt="Екран Налаштування Основні" data-lightbox="" loading="lazy" src="./assets/img/settings.webp"/><figcaption>«НАЛАШТУВАННЯ → ОСНОВНІ»: базова уставка, гістерезис, активна уставка, поточний тиск.</figcaption></figure>
+<div>
+<div class="definition-list">
+<div><dt>Базова уставка</dt><dd>Робоче значення тиску для звичайного режиму.</dd></div>
+<div><dt>Активна уставка</dt><dd>Значення, яке PLC реально використовує зараз. Саме з ним порівнюють PV.</dd></div>
+<div><dt>Гістерезис</dt><dd>Допустима зона навколо активної уставки, що зменшує зайві перемикання.</dd></div>
+</div>
+<div class="formula"><span>Нижня межа</span><strong>SP − H</strong><span>Верхня межа</span><strong>SP + H</strong></div>
+<div class="callout warning"><strong>Не плутати.</strong> Якщо активний тижневий графік, зміна базової уставки може не змінити робочий тиск негайно. Перевіряйте поле «АКТИВНА УСТАВКА».</div>
+</div>
+</div>
+</section>
+<section class="section searchable" data-title="Тижневий графік тиску T1 T2 T3 T4 профіль коректний" id="schedule">
+<div class="section-head"><span class="section-num">05</span><div><h2>Тижневий графік тиску</h2><p>Для оператора — контроль поточного профілю. Редагування виконується лише відповідно до наданих прав.</p></div></div>
+<figure class="figure-card wide"><img alt="Екран тижневого графіка тиску" data-lightbox="" loading="lazy" src="./assets/img/schedule.webp"/><figcaption>Контролюйте поточний день, активну зону, уставку та індикатор коректності профілю.</figcaption></figure>
+<div class="mini-table-wrap">
+<table class="data-table"><thead><tr><th>Що дивитися</th><th>Нормальна ознака</th></tr></thead><tbody>
+<tr><td>ДЕНЬ</td><td>Відповідає поточному дню.</td></tr>
+<tr><td>АКТИВНА ЗОНА</td><td>T1–T4 змінюється у задані моменти.</td></tr>
+<tr><td>УСТАВКА</td><td>Відповідає значенню активної зони.</td></tr>
+<tr><td>ПРОФІЛЬ КОРЕКТНИЙ</td><td>Профіль прийнятий системою як коректний.</td></tr>
+</tbody></table>
+</div>
+<div class="callout info"><strong>Якщо графік вимкнений,</strong> робоче завдання визначається базовою уставкою.</div>
+</section>
+<section class="section searchable" data-title="Тренди графік тиску PV SP частота струм" id="trends">
+<div class="section-head"><span class="section-num">06</span><div><h2>Тренди</h2><p>Тренд відповідає на питання «як система змінювалася у часі».</p></div></div>
+<figure class="figure-card wide"><img alt="Графік тиску з каналами уставка тиск частота струм" data-lightbox="" loading="lazy" src="./assets/img/trendtabs.webp"/><figcaption>Для аналізу порівнюйте час зміни з журналом подій.</figcaption></figure>
+<div class="metric-grid">
+<article><span>PV</span><h3>Тиск</h3><p>Чи наближається до активної уставки та чи немає тривалого відхилення.</p></article>
+<article><span>SP</span><h3>Уставка</h3><p>Чи відповідає поточному режиму або зоні тижневого графіка.</p></article>
+<article><span>f</span><h3>Частота</h3><p>Чи змінюється регулювальний вплив відповідно до потреби системи.</p></article>
+<article><span>I</span><h3>Струм</h3><p>Нетипові зміни порівнюйте з частотою, станами насосів і журналом.</p></article>
+</div>
+<div class="callout warning"><strong>Не змінюйте PID або сервісні затримки</strong> лише через один нетиповий фрагмент графіка.</div>
+</section>
+<section class="section searchable" data-title="Журнал подій історія подій запуск зупинка режим сну каскад" id="events">
+<div class="section-head"><span class="section-num">07</span><div><h2>Журнал подій</h2><p>Відновлення послідовності того, що відбулося.</p></div></div>
+<div class="two-col">
+<figure class="figure-card"><img alt="Журнал подій HMI" data-lightbox="" loading="lazy" src="./assets/img/journal.webp"/><figcaption>Читайте декілька сусідніх записів, а не лише останній рядок.</figcaption></figure>
+<div>
+<ol class="steps compact-steps">
+<li><span>1</span><div><strong>Визначити приблизний час</strong><p>Коли сталася зупинка або зміна режиму.</p></div></li>
+<li><span>2</span><div><strong>Знайти записи перед подією</strong><p>Дивитися хронологічну послідовність.</p></div></li>
+<li><span>3</span><div><strong>Відокремити штатний перехід</strong><p>Режим сну або каскад не є аварією самі по собі.</p></div></li>
+<li><span>4</span><div><strong>Порівняти з трендом</strong><p>Зафіксувати час, PV, SP, f/I та текст ключової події.</p></div></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="section searchable" data-title="Аварії попередження скинути аварію сухий хід живлення датчик тиску" id="alarms">
+<div class="section-head"><span class="section-num">08</span><div><h2>Аварії та попередження</h2><p>Скидання — тільки після усунення причини.</p></div></div>
+<figure class="figure-card wide"><img alt="Сторінка аварій HMI" data-lightbox="" loading="lazy" src="./assets/img/alarms.webp"/><figcaption>Точне значення визначається текстом повідомлення, а не лише кольором.</figcaption></figure>
+<ol class="steps horizontal-desktop">
+<li><span>1</span><div><strong>Прочитати текст</strong><p>Відкрити «ЖУРНАЛ → АВАРІЇ».</p></div></li>
+<li><span>2</span><div><strong>Перевірити причину</strong><p>Сухий хід, живлення, датчик тиску або інший підтверджений стан.</p></div></li>
+<li><span>3</span><div><strong>Усунути причину</strong><p>Не виконувати скидання, поки вона активна.</p></div></li>
+<li><span>4</span><div><strong>Скинути один раз</strong><p>Виконати штатну команду «СКИНУТИ АВАРІЮ».</p></div></li>
+<li><span>5</span><div><strong>Проконтролювати</strong><p>Якщо аварія повернулась — повторні скидання припинити.</p></div></li>
+</ol>
+</section>
+<section class="section searchable" data-title="Автоматичні режими каскад розвантаження режим сну контрольована зупинка" id="auto">
+<div class="section-head"><span class="section-num">09</span><div><h2>Автоматичні режими</h2><p>Штатні переходи, у які оператор не повинен втручатися ручним керуванням.</p></div></div>
+<div class="auto-grid">
+<article><span class="auto-icon">1</span><h3>Один насос від ПЧ</h3><p>ПЧ регулює продуктивність насоса для підтримання активної уставки.</p></article>
+<article><span class="auto-icon">2</span><h3>Перший каскад</h3><p>1 × МЕРЕЖА-АВТО + 1 × ПЧ-АВТО. Контролювати тиск, не перемикати насоси вручну.</p></article>
+<article><span class="auto-icon">3</span><h3>Другий каскад</h3><p>2 × МЕРЕЖА-АВТО + 1 × ПЧ-АВТО. Контролювати тиск та відсутність аварій.</p></article>
+<article><span class="auto-icon">↓</span><h3>Розвантаження</h3><p>При зменшенні потреби автоматика сама зменшує кількість працюючих насосів.</p></article>
+<article><span class="auto-icon">Z</span><h3>Режим сну</h3><p>Штатна автоматична зупинка при малій або відсутній потребі у водоподачі.</p></article>
+<article><span class="auto-icon">■</span><h3>Контрольована зупинка</h3><p>ПЧ плавно знижує частоту до безпечного завершення зупинки. Не втручатися.</p></article>
+</div>
+<div class="callout info"><strong>Як відрізнити штатний перехід:</strong> тиск відповідає умовам, активної аварії немає, а журнал підтверджує каскад / розвантаження / режим сну.</div>
+</section>
+<section class="section searchable" data-title="Сухий хід вода автоматичні спроби відновлення автоспроба" id="dry-run">
+<div class="section-head"><span class="section-num">10</span><div><h2>Сухий хід</h2><p>Захисний стан. Принципово відрізняється від режиму сну.</p></div></div>
+<div class="danger-panel">
+<div class="danger-mark">!</div>
+<div><h3>Не форсувати запуск</h3><p>Після підтвердження сухого ходу робота насосної групи припиняється. Кількість автоматичних спроб відновлення обмежена.</p></div>
+</div>
+<ol class="steps">
+<li><span>1</span><div><strong>Перевірити фактичну наявність води</strong><p>Не орієнтуватися лише на бажання запустити систему.</p></div></li>
+<li><span>2</span><div><strong>Перевірити активну аварію та журнал</strong><p>Зафіксувати час і текст повідомлення.</p></div></li>
+<li><span>3</span><div><strong>Дочекатися автоматичної спроби, якщо вона ще дозволена</strong><p>Не виконувати багаторазове ручне скидання.</p></div></li>
+<li><span>4</span><div><strong>Після відновлення води</strong><p>Проконтролювати штатний запуск. Якщо автоспроби вичерпані — усунути причину та виконати штатне скидання.</p></div></li>
+<li><span>5</span><div><strong>Якщо аварія повторюється</strong><p>Припинити спроби і передати систему в сервіс.</p></div></li>
+</ol>
+</section>
+<section class="section searchable" data-title="Діагностика насос не запускається тиск нижче SP зупинилася без аварії немає зв'язку ПЧ помилка режимів" id="diagnostics">
+<div class="section-head"><span class="section-num">11</span><div><h2>Швидка діагностика</h2><p>Спочатку ознака → перша перевірка → подальша дія.</p></div></div>
+<div class="diagnostic-list">
+<details open=""><summary><strong>Усі насоси зупинилися без аварії</strong><span>›</span></summary><div><p><b>Перша перевірка:</b> PV, SP і журнал на подію переходу в режим сну.</p><p><b>Дія:</b> якщо режим сну підтверджено — дочекатися автоматичного виходу при зниженні тиску.</p></div></details>
+<details><summary><strong>Насос не запускається</strong><span>›</span></summary><div><p><b>Перша перевірка:</b> фізичний режим АВТО, живлення, сухий хід, зв’язок із ПЧ, активні аварії, достовірність тиску.</p><p><b>Дія:</b> перевірити журнал і доступність насоса. «ПОМИЛКА РЕЖИМІВ» — спочатку перевірити перемикачі.</p></div></details>
+<details><summary><strong>Тиск тривало нижче активної уставки</strong><span>›</span></summary><div><p><b>Перша перевірка:</b> частота ПЧ, стан ПЧ-АВТО, склад працюючих насосів, сухий хід та аварії.</p><p><b>Дія:</b> якщо всі доступні насоси працюють, але тиск не відновлюється — зафіксувати дані й передати в сервіс.</p></div></details>
+<details><summary><strong>Немає зв’язку з ПЧ</strong><span>›</span></summary><div><p><b>Перша перевірка:</b> індикатор «ЗВ’ЯЗОК З ПЧ» і журнал.</p><p><b>Для сервісу:</b> стан Modbus 60 — помилка читання; 110 — помилка запису. Оператор не змінює комунікаційні параметри.</p></div></details>
+<details><summary><strong>Аварія одразу повертається після скидання</strong><span>›</span></summary><div><p><b>Означає:</b> умова несправності залишається активною або повторно фіксується.</p><p><b>Дія:</b> не виконувати багаторазове скидання; перевірити журнал та передати інформацію відповідальному працівнику.</p></div></details>
+<details><summary><strong>«ПОМИЛКА РЕЖИМІВ»</strong><span>›</span></summary><div><p><b>Означає:</b> несумісний стан керування насосом.</p><p><b>Дія:</b> не продовжувати пуски; перевірити фізичні перемикачі та журнал.</p></div></details>
+<details><summary><strong>«НАСОС НЕ АКТИВНИЙ»</strong><span>›</span></summary><div><p><b>Означає:</b> насос не бере участі у штатній автоматичній роботі.</p><p><b>Дія:</b> врахувати зменшення резерву; при потребі максимальної продуктивності повідомити відповідального працівника.</p></div></details>
+</div>
+</section>
+<section class="section searchable stop-section" data-title="Коли оператор повинен припинити спроби відновлення стоп" id="stop">
+<div class="section-head"><span class="section-num">12</span><div><h2>Коли припинити спроби відновлення</h2><p>Після цього оператор не виконує повторні пуски або скидання.</p></div></div>
+<div class="stop-box">
+<span class="stop-label">СТОП</span>
+<ul>
+<li>аварія одразу повторюється після штатного скидання;</li>
+<li>підтверджений сухий хід не усунено;</li>
+<li>присутня аварія живлення або активна аварія ПЧ;</li>
+<li>зафіксована несправність датчика тиску;</li>
+<li>запуск або зупинка ПЧ завершується таймаутом;</li>
+<li>фактичний стан обладнання не відповідає індикації HMI.</li>
+</ul>
+</div>
+<div class="service-card">
+<h3>Що передати в сервіс</h3>
+<div class="service-grid"><span>Дата і точний час</span><span>PV / SP</span><span>Стани насосів №1–№3</span><span>Який насос був на ПЧ</span><span>Частота та струм, якщо доступні</span><span>Точний текст аварії та останні записи журналу</span></div>
+</div>
+</section>
+<footer class="site-footer">
+<div><strong>HMI INTERACTIVE TECHNICAL GUIDE</strong><span>Насосна група 3 × 5,5 кВт • Kinco GL070E • TWERD MFC710</span></div>
+<div class="footer-note">Інтерактивна вебверсія призначена для ознайомлення та операторської довідки. Вона не є каналом керування PLC або ПЧ.</div>
+</footer>
+</div>
+</main>
+</div>
+<div class="overlay" hidden="" id="overlay"></div>
+<dialog class="lightbox" id="lightbox"><button aria-label="Закрити" class="lightbox-close">×</button><img alt="" id="lightboxImg"/></dialog>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<script defer="" src="./assets/js/app.js"></script>
+<script defer="True" src="./assets/js/explorer.js"></script></body>
+</html>
