@@ -16,7 +16,7 @@
 <div class="app-shell">
 <aside aria-label="Навігація інструкції" class="sidebar" id="sidebar">
 <div class="brand-block">
-<img alt="Енерго Плюс" class="brand-img" src="./assets/img/header_brand.webp"/>
+<img alt="Енерго Плюс" class="brand-img" src="./assets/img/brand-logo.webp"/>
 <div class="manual-id">
 <span class="eyebrow">HMI • ТЕХНІЧНИЙ ДОВІДНИК</span>
 <strong>Насосна група 3 × 5,5 кВт</strong>
@@ -32,7 +32,7 @@
 <nav class="nav-list" id="navList"><a data-nav="" href="#interactive">Інтерактивна модель HMI</a><a data-nav="" href="#quick">Оперативна довідка</a><a data-nav="" href="#start">1. Підготовка до роботи</a><a data-nav="" href="#main-screen">2. Головний екран</a><a data-nav="" href="#pumps">3. Стани насосів</a><a data-nav="" href="#pressure">4. Параметри тиску</a><a data-nav="" href="#schedule">5. Тижневий графік</a><a data-nav="" href="#trends">6. Тренди</a><a data-nav="" href="#events">7. Журнал подій</a><a data-nav="" href="#alarms">8. Аварії та попередження</a><a data-nav="" href="#auto">9. Автоматичні режими</a><a data-nav="" href="#dry-run">10. Захист сухого ходу</a><a data-nav="" href="#diagnostics">11. Первинна діагностика</a><a data-nav="" href="#stop">12. Межі дій оператора</a></nav>
 <div class="sidebar-footer">
 <div class="status-row"><span class="status-dot" id="statusDot"></span><span id="connectionText">Перевірка з'єднання…</span></div>
-<div class="version">WEB-HMI-GUIDE • Rev. 2.0 • 03.09.2026</div>
+<div class="version">WEB-HMI-GUIDE • Rev. 2.1 • 03.09.2026</div>
 </div>
 </aside>
 <main class="main">
@@ -63,11 +63,36 @@
 </div>
 <div aria-label="Екрани HMI" class="screen-selector" id="screenSelector" role="tablist">
 <button aria-selected="true" class="screen-tab active" data-screen="main" role="tab"><span>01</span>Головний екран</button>
-<button class="screen-tab" data-screen="settings" role="tab"><span>02</span>Налаштування</button>
+<button class="screen-tab" data-screen="settings-main" role="tab"><span>02</span>Налаштування</button>
 <button class="screen-tab" data-screen="schedule" role="tab"><span>03</span>Графік роботи</button>
 <button class="screen-tab" data-screen="trends" role="tab"><span>04</span>Графік тиску</button>
 <button class="screen-tab" data-screen="journal" role="tab"><span>05</span>Журнал подій</button>
 <button class="screen-tab" data-screen="alarms" role="tab"><span>06</span>Аварії</button>
+</div>
+<div class="settings-navigation" id="settingsNavigation" hidden>
+  <div class="settings-nav-header">
+    <div>
+      <span>СТРУКТУРА «НАЛАШТУВАННЯ»</span>
+      <strong>Групи параметрів HMI</strong>
+    </div>
+    <small>Виберіть групу — зображення та реєстр об’єктів оновляться.</small>
+  </div>
+  <div class="settings-group-selector" id="settingsGroupSelector" role="tablist" aria-label="Групи налаштувань">
+    <button class="settings-group-tab" data-settings-screen="settings-main" role="tab">ОСНОВНІ</button>
+    <button class="settings-group-tab" data-settings-screen="settings-delays" role="tab">ЗАТРИМКИ</button>
+    <button class="settings-group-tab" data-settings-screen="settings-drive" role="tab">ДВИГУН / ПЧ</button>
+    <button class="settings-group-tab" data-settings-screen="settings-pid" role="tab">PID РЕГУЛЮВАННЯ</button>
+    <button class="settings-group-tab service" data-settings-screen="service-io" role="tab">СЕРВІС</button>
+  </div>
+  <div class="service-page-navigation" id="servicePageNavigation" hidden>
+    <span>СЕРВІСНІ СТОРІНКИ</span>
+    <div class="service-page-selector" role="tablist" aria-label="Сервісні сторінки">
+      <button data-service-screen="service-io" role="tab"><b>1</b>Датчик / силова комутація</button>
+      <button data-service-screen="service-cascade" role="tab"><b>2</b>Каскад / сухий хід</button>
+      <button data-service-screen="service-modbus" role="tab"><b>3</b>PID / Modbus / скидання</button>
+      <button data-service-screen="service-states" role="tab"><b>4</b>Основні стани</button>
+    </div>
+  </div>
 </div>
 <div class="explorer-grid">
 <div class="screen-workbench">
@@ -91,6 +116,7 @@
 <dl class="inspector-list">
 <div><dt>Призначення</dt><dd id="objectPurpose">—</dd></div>
 <div><dt>Що оцінює оператор</dt><dd id="objectOperator">—</dd></div>
+<div><dt>Вплив на роботу системи</dt><dd id="objectImpact">—</dd></div>
 <div><dt>Рівень доступу</dt><dd id="objectAccess">—</dd></div>
 <div><dt>Пов’язаний розділ</dt><dd id="objectRelated">—</dd></div>
 </dl>
@@ -112,6 +138,7 @@
 <span><i class="legend-mark nav"></i>Навігаційний об’єкт</span>
 <span><i class="legend-mark param"></i>Параметр / уставка</span>
 <span><i class="legend-mark alarm"></i>Аварійний / захисний об’єкт</span>
+<span><i class="legend-mark command"></i>Сервісна команда</span>
 </div>
 </section><section class="hero searchable" data-title="Швидка довідка оператора" id="quick">
 <div class="hero-copy">

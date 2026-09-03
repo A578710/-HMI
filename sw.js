@@ -1,9 +1,9 @@
-const CACHE = 'hmi-interactive-guide-v2';
+const CACHE = 'hmi-interactive-guide-v2-1';
 const ASSETS = [
   './','./index.html','./manifest.webmanifest','./assets/css/styles.css','./assets/js/app.js','./assets/js/explorer.js',
   './assets/icons/icon-192.png','./assets/icons/icon-512.png',
-  './assets/img/header_brand.webp','./assets/img/main.webp','./assets/img/diagnostics.webp',
-  './assets/img/pumps.webp','./assets/img/settings.webp','./assets/img/schedule.webp',
+  './assets/img/brand-logo.webp','./assets/img/brand-mark.webp','./assets/img/main.webp','./assets/img/diagnostics.webp',
+  './assets/img/pumps.webp','./assets/img/settings.webp','./assets/img/settings-main.webp','./assets/img/settings-delays.webp','./assets/img/settings-drive.webp','./assets/img/settings-pid.webp','./assets/img/service-io.webp','./assets/img/service-cascade.webp','./assets/img/service-modbus.webp','./assets/img/service-states.webp','./assets/img/schedule.webp',
   './assets/img/trendtabs.webp','./assets/img/journal.webp','./assets/img/alarms.webp'
 ];
 self.addEventListener('install', event => {

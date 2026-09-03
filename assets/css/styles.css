@@ -98,3 +98,22 @@ img{max-width:100%;display:block}
 @media(max-width:1100px){.explorer-grid{grid-template-columns:1fr}.object-inspector{position:static;min-height:0}.object-register{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.screen-workbench-bar{align-items:flex-start;flex-direction:column}.object-register{grid-template-columns:repeat(2,1fr)}.interactive-head .section-num{width:46px}.hmi-hotspot::after{width:19px;height:19px;top:-7px;right:-7px;font-size:9px}.technical-legend{gap:8px 12px}}
 @media(max-width:480px){.object-register{grid-template-columns:1fr}.screen-selector{margin-left:-5px;margin-right:-5px}.screen-tab{padding:8px 9px;font-size:12px}.workbench-actions{width:100%}.compact-btn{flex:1}}
+
+/* ===== Settings hierarchy / BrandBook refinement ===== */
+.brand-img{height:76px;padding:8px 10px;border-radius:12px;object-fit:contain;object-position:left center}
+.settings-navigation{margin:-2px 0 16px;border:1px solid #cedae4;border-radius:14px;background:#f8fafc;overflow:hidden}
+.settings-navigation[hidden]{display:none!important}
+.settings-nav-header{display:flex;align-items:end;justify-content:space-between;gap:16px;padding:12px 14px;border-bottom:1px solid #dce4eb;background:linear-gradient(90deg,#eef7fa,#f7f9fc)}
+.settings-nav-header>div{display:grid;gap:2px}.settings-nav-header span{font-size:9px;letter-spacing:.12em;font-weight:900;color:#0788a7}.settings-nav-header strong{font-size:14px;color:#151b3f}.settings-nav-header small{font-size:10px;color:#728091;text-align:right}
+.settings-group-selector{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:10px}
+.settings-group-tab{border:1px solid #cfd9e2;background:#fff;border-radius:9px;padding:9px 8px;font-size:11px;font-weight:900;color:#26324a;cursor:pointer;transition:.15s}
+.settings-group-tab:hover{border-color:#77c9dd;background:#f2fafc}.settings-group-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 6px 16px rgba(9,7,96,.13)}
+.settings-group-tab.service.active{background:#008eb0;border-color:#008eb0}
+.service-page-navigation{padding:0 10px 10px}.service-page-navigation[hidden]{display:none!important}.service-page-navigation>span{display:block;font-size:9px;letter-spacing:.11em;font-weight:900;color:#7a8795;margin:2px 0 6px}
+.service-page-selector{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.service-page-selector button{display:flex;align-items:center;gap:7px;text-align:left;border:1px solid #d5dfe7;background:#fff;border-radius:9px;padding:8px 9px;font-size:10px;font-weight:800;color:#344154;cursor:pointer;line-height:1.25}
+.service-page-selector button b{width:22px;height:22px;display:grid;place-items:center;border-radius:6px;background:#e9f6fa;color:#087e9b;font-size:10px;flex:none}.service-page-selector button:hover{background:#f2fafc;border-color:#8bcfdf}.service-page-selector button.active{border-color:#00a0c6;background:#eaf8fb;color:#0b4960}.service-page-selector button.active b{background:#00a0c6;color:#fff}
+.hmi-hotspot.type-command{border-color:rgba(255,210,55,.98);background:rgba(255,198,0,.09)}.hmi-hotspot.type-command::after{background:#c98d00}
+.legend-mark.command{border-color:#c98d00;background:rgba(255,198,0,.08)}
+@media(max-width:900px){.settings-group-selector{grid-template-columns:repeat(2,1fr)}.service-page-selector{grid-template-columns:repeat(2,1fr)}.settings-nav-header{align-items:flex-start;flex-direction:column}.settings-nav-header small{text-align:left}}
+@media(max-width:520px){.settings-group-selector,.service-page-selector{grid-template-columns:1fr}.brand-img{height:68px}}
