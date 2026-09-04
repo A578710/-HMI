@@ -56,8 +56,6 @@
 .inspector-stepper .compact-btn{min-height:36px}
 #interactive .object-register{grid-template-columns:repeat(5,minmax(0,1fr))}
 #interactive .hmi-hotspot{overflow:visible}
-#interactive .hmi-hotspot .hotspot-tag{position:absolute;left:4px;top:4px;z-index:5;display:none;max-width:220px;padding:4px 6px;border-radius:4px;background:rgba(5,26,46,.94);color:#fff;font:700 10px/1.25 system-ui,Segoe UI,Arial,sans-serif;white-space:normal;text-align:left;box-shadow:0 2px 8px rgba(0,0,0,.28);pointer-events:none}
-#interactive .hmi-hotspot:hover .hotspot-tag,#interactive .hmi-hotspot:focus-visible .hotspot-tag,#interactive .hmi-hotspot.active .hotspot-tag{display:block}
 #interactive .hmi-hotspot.active{z-index:4;border-width:2px;box-shadow:0 0 0 2px rgba(255,255,255,.25),0 0 0 5px rgba(0,160,198,.12)}
 @media(max-width:1100px){#interactive .inspector-list{grid-template-columns:repeat(2,minmax(0,1fr))}#interactive .object-register{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:700px){#interactive .inspector-list{grid-template-columns:1fr}#interactive .object-register{grid-template-columns:repeat(2,minmax(0,1fr))}.selection-preview{grid-template-columns:auto minmax(0,1fr)}.inspector-stepper{grid-template-columns:1fr 1fr}.inspector-stepper span{grid-column:1/-1;grid-row:1}}
@@ -68,3 +66,4 @@
   #interactive .screen-tab.active{border-color:#83b7c8;background:#edf7fa}
 }
 @media(max-width:430px){#interactive .screen-selector{grid-template-columns:1fr 1fr}}
+#interactive .hotspot-tag{display:none!important}

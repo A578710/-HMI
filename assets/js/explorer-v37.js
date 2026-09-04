@@ -304,7 +304,6 @@
       const b=document.createElement('button');
       b.type='button'; b.className=`hmi-hotspot type-${obj.type}`; b.dataset.id=obj.id; b.dataset.index=String(i+1).padStart(2,'0');
       b.setAttribute('aria-label', `${i+1}. ${obj.title}`);
-      const tag=document.createElement('span'); tag.className='hotspot-tag'; tag.textContent=`${obj.code} · ${obj.title}`; b.appendChild(tag);
       const rect = (obj.px && screen.sourceSize) ? {
         x: obj.px[0] / screen.sourceSize[0] * 100,
         y: obj.px[1] / screen.sourceSize[1] * 100,
