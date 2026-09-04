@@ -1,13 +1,13 @@
 {
-  "name": "HMI 3×5,5 кВт — Інтерактивний технічний довідник",
-  "short_name": "HMI Довідник",
-  "description": "Інтерактивний технічний довідник HMI насосної групи 3 × 5,5 кВт",
+  "name": "HMI Online Technical Manual — насосна група 3 × 5,5 кВт",
+  "short_name": "HMI Manual",
+  "description": "Онлайн-інструкція HMI насосної групи 3 × 5,5 кВт",
   "lang": "uk",
-  "start_url": "./",
+  "start_url": "./?v37=1",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#eef2f5",
-  "theme_color": "#090760",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "./assets/icons/icon-192.png",
